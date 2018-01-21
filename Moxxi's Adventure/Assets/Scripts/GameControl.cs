@@ -8,7 +8,7 @@ public class GameControl : MonoBehaviour
     public static GameControl control;
     public bool[] pages;
     public int numPages;
-
+    public GameObject pagesCanvas;
     private int pagesFound;
 
     void Awake()
@@ -39,7 +39,11 @@ public class GameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Scene currentScene = SceneManager.GetActiveScene();
+        if((pagesCanvas.activeSelf == false) &&  (currentScene.name != "Menu"))
+        {
+            pagesCanvas.SetActive(true);
+        }
     }
 
     public bool GetPageFound(int num)
